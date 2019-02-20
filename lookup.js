@@ -10,7 +10,9 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
     var t = demoService.GetData()
     $scope.ReceivedData = t;
     for (element in t) {
-      document.getElementById(element).value = t[element]
+      if (element != "link") {
+        document.getElementById(element).value = t[element]
+      }
     }
   });
 });
@@ -19,6 +21,8 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
 //it passes user input to demoService, and asks it to send it to displayField
 app.controller("lookupField",function($scope, demoService) {
   $scope.title = "Search Input";
+  var select = document.getElementById('selectField');
+  var option
   $scope.SendData = function() {
     var d = $scope.sampledata;
     demoService.SetData(d);
@@ -37,7 +41,6 @@ app.service("demoService",function($rootScope){
     }
     $rootScope.$emit("dummyevent")
     }
-    console.log("END SERVICE")
 
     this.GetData = function() {
       return this.TempData;
