@@ -9,6 +9,9 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
   $rootScope.$on("dummyevent", function(){
     var t = demoService.GetData()
     $scope.ReceivedData = t;
+    for (element in t) {
+      document.getElementById('output').innerHTML += "<div>" + t[element] + "</div>"
+    }
   });
 });
 
@@ -28,7 +31,7 @@ app.service("demoService",function($rootScope){
     for (var index in app.data) {
       if (app.data.hasOwnProperty(index)) {
         if (app.data[index]["name"] == d) {
-          this.TempData = app.data[index]["designation"]
+          this.TempData = app.data[index]
         }
       }
     }
