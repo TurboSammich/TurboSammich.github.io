@@ -27,7 +27,7 @@ app.service("demoService",function($rootScope){
   this.SetData = function(d) {
     for (var index in app.data) {
       if (app.data.hasOwnProperty(index)) {
-        if (app.data[index]["name"] = d) {
+        if (app.data[index]["name"] == d) {
           this.TempData = app.data[index]["designation"]
         }
       }
