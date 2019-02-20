@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script src = "Tabletop.js"></script>
+<script src = "lookup.js"></script>
+
+<div ng-app="dataStore">
+<h1>Project Gabriel Data Access</h1>
+<br />
+<hr />
+<div ng-controller="lookupField">
+  <input ng-model="sampledata" />
+  <button ng-click="SendData()">Send</button>
+</div>
+<br />
+<hr />
+<div ng-controller="displayField">
+  <span>{{ReceivedData}}</span>
+</div>
+</div>
