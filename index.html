@@ -2,18 +2,63 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 <script src = "Tabletop.js"></script>
 <script src = "lookup.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 
 <div ng-app="dataStore">
 <h1>Project Gabriel Data Access</h1>
 <br />
 <hr />
 <div ng-controller="lookupField">
-  <input ng-model="sampledata" />
+  <input id="searchField" ng-model="sampledata" />
   <button ng-click="SendData()">Send</button>
 </div>
 <br />
 <hr />
 <div id="output" ng-controller="displayField">
-<span>{{ReceivedData}}</span>
+  <span id="designationSpan">
+    <label><b>Designation: </b></label>
+    <input id="designation" readonly />
+  </span>
+  <span id="nameSpan">
+    <label id="nameLabel"><b>Name: </b></label>
+    <input id="name" readonly/>
+  </span>
+  <br />
+  <span id="locSpan">
+    <label><b>Location: </b></label>
+    <input id="location" readonly />
+  </span>
+  <span id="heightSpan">
+    <label id="heightLabel"><b>Height: </b></label>
+    <input id="height" readonly />
+  </span>
+  <br />
+  <span id="meleeSpan">
+    <label id="meleeLabel"><b>Melee Capability: </b></label>
+    <input id="melee" readonly />
+  </span>
+  <br />
+  <span id="rangedSpan">
+    <label id="rangedLabel"><b>Ranged Capability: </b></label>
+    <input id="ranged" readonly />
+  </span>
+  <br />
+  <span id="protectionSpan">
+    <label id="protectionLabel"><b>Defensive Capability: </b></label>
+    <input id="protection" readonly />
+  </span>
+  <br />
+  <span id="utilitySpan">
+    <label id="utilityLabel"><b>Utility: </b></label>
+    <input id="utility" readonly />
+  </span>
+  <br />
+  <span id="personalitySpan">
+    <label id="personalityLabel"><b>Personality</b></label>
+    <br />
+    <textarea id="personality" rows="5" cols="100" readonly>
+      </textarea>
+  </span>
 </div>
+
 </div>

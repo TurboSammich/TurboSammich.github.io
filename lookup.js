@@ -10,7 +10,7 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
     var t = demoService.GetData()
     $scope.ReceivedData = t;
     for (element in t) {
-      document.getElementById('output').innerHTML += "<div>" + t[element] + "</div>"
+      document.getElementById(element).value = t[element]
     }
   });
 });

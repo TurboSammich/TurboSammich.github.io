@@ -1,0 +1,68 @@
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 90px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+input{
+  display: inline-block;
+  width: 150px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+textarea{
+  border-radius: 5px;
+  resize: none;
+}
+
+#searchField{
+  display: inline-block;
+  width: 250px;
+}
+#nameLabel{
+  display: inline-block;
+  clear: none;
+  float: none;
+}
+#name{
+  display: inline-block;
+  clear: none;
+}
+#heightLabel{
+  display: inline-block;
+  clear: none;
+  float: none;
+}
+#height{
+  display: inline-block;
+  clear: none;
+}
+#meleeLabel{
+  width: 165px;
+}
+#rangedLabel{
+  width: 165px;
+}
+#protectionLabel{
+  width: 165px;
+}
+#utilityLabel{
+  width: 165px;
+}
+#melee{
+  width: 323px;
+}
+#ranged{
+  width: 323px;
+}
+#protection{
+  width: 323px;
+}
+#utility{
+  width: 323px;
+}
+#personalityLabel{
+  padding-bottom: 0px;
+}
