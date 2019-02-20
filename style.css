@@ -16,10 +16,12 @@ textarea{
   border-radius: 5px;
   resize: none;
 }
-
-#searchField{
-  display: inline-block;
-  width: 250px;
+button{
+  border-radius: 5px;
+}
+select{
+  border-radius: 5px;
+  width: 150px;
 }
 #nameLabel{
   display: inline-block;
