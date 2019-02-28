@@ -9,6 +9,7 @@ label{
     width: 90px;
     text-align: left;
     padding-bottom: 5px;
+    padding-right: 5px;
 }
 input{
   display: inline-block;
@@ -35,6 +36,7 @@ hr{
   display: inline-block;
   clear: none;
   float: none;
+  padding-right: 5px;
 }
 #name{
   display: inline-block;
@@ -44,6 +46,7 @@ hr{
   display: inline-block;
   clear: none;
   float: none;
+  padding-right: 5px;
 }
 #height{
   display: inline-block;
@@ -51,15 +54,19 @@ hr{
 }
 #meleeLabel{
   width: 165px;
+  padding-right: 10px;
 }
 #rangedLabel{
   width: 165px;
+  padding-right: 10px;
 }
 #protectionLabel{
   width: 165px;
+  padding-right: 10px;
 }
 #utilityLabel{
   width: 165px;
+  padding-right: 10px;
 }
 #melee{
   width: 500px;
