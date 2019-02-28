@@ -27,8 +27,9 @@ select{
   border-radius: 5px;
   width: 150px;
 }
-#overlay{
+hr{
   width: 680px;
+  display: inline-block;
 }
 #nameLabel{
   display: inline-block;
@@ -78,7 +79,7 @@ select{
 #linkSpan{
   text-align: center;
   display: inline-block;
-  width: 100%;
+  width: 680px;
   margin: auto;
 }
 #link{
