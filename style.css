@@ -92,3 +92,8 @@ hr{
 #link{
   width: 90px;
 }
+@media only screen and (max-device-width: 480px) {
+  #output{
+    font-size: 0.875em;
+  }
+}
