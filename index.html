@@ -4,7 +4,7 @@
 <script src = "lookup.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<div ng-app="dataStore">
+<div id="overlay" ng-app="dataStore">
 <h1>Project Gabriel Data Access</h1>
 <br />
 <hr />
@@ -58,9 +58,12 @@
   <span id="personalitySpan">
     <label id="personalityLabel"><b>Personality</b></label>
     <br />
-    <textarea id="personality" rows="5" cols="100" readonly>
+    <textarea id="personality" rows="10" cols="90" readonly>
       </textarea>
   </span>
+  <br />
+  <span id="linkSpan">
+    <input id="link" type="button" value="View Dossier" disabled />
+  </span>
 </div>
-
 </div>

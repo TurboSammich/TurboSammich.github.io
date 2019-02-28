@@ -1,3 +1,7 @@
+body{
+  background-color:  #d9d9d9
+}
+
 label{
     display: inline-block;
     float: left;
@@ -8,7 +12,7 @@ label{
 }
 input{
   display: inline-block;
-  width: 150px;
+  width: 238px;
   padding-bottom: 5px;
   border-radius: 5px;
 }
@@ -22,6 +26,9 @@ button{
 select{
   border-radius: 5px;
   width: 150px;
+}
+#overlay{
+  width: 680px;
 }
 #nameLabel{
   display: inline-block;
@@ -54,17 +61,26 @@ select{
   width: 165px;
 }
 #melee{
-  width: 323px;
+  width: 500px;
 }
 #ranged{
-  width: 323px;
+  width: 500px;
 }
 #protection{
-  width: 323px;
+  width: 500px;
 }
 #utility{
-  width: 323px;
+  width: 500px;
 }
 #personalityLabel{
   padding-bottom: 0px;
+}
+#linkSpan{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+}
+#link{
+  width: 90px;
 }
