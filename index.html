@@ -1,68 +1,139 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-<script src = "Tabletop.js"></script>
-<script src = "lookup.js"></script>
+<script src = "frameTabletop.js"></script>
+<!--<script src = "engineTabletop.js"></script>
+<script src = "lookupEngines.js"></script>
+-->
+<script src = "lookupFrames.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<div id="overlay" ng-app="dataStore">
-<h1>Project Gabriel Data Access</h1>
-<hr />
-<div ng-controller="lookupField">
-  <!-- <input id="searchField" ng-model="sampledata" /> -->
-  <select id="selectField" ng-model="sampledata">
-  </select>
-  <button ng-click="SendData()">Search</button>
+<div class="tab">
+  <button class="tablinks" onclick="openSheet(event, 'Frames')">Frames</button>
+  <button class="tablinks" onclick="openSheet(event, 'Engines')">Engines</button>
 </div>
-<br />
-<hr />
-<div id="output" ng-controller="displayField">
-  <span id="designationSpan">
-    <label><b>Designation: </b></label>
-    <input id="designation" readonly />
-  </span>
-  <span id="nameSpan">
-    <label id="nameLabel"><b>Name: </b></label>
-    <input id="name" readonly/>
-  </span>
+
+<div id="frames" ng-app="frameApp" class="tabcontent">
+  <h1>Project Gabriel Data Access</h1>
+  <hr />
+  <div ng-controller="lookupField">
+    <!-- <input id="searchField" ng-model="sampledata" /> -->
+    <select id="selectField" ng-model="sampledata">
+    </select>
+    <button ng-click="SendData()">Search</button>
+  </div>
   <br />
-  <span id="locSpan">
-    <label><b>Location: </b></label>
-    <input id="location" readonly />
-  </span>
-  <span id="heightSpan">
-    <label id="heightLabel"><b>Height: </b></label>
-    <input id="height" readonly />
-  </span>
-  <br />
-  <span id="meleeSpan">
-    <label id="meleeLabel"><b>Melee Capability: </b></label>
-    <input id="melee" readonly />
-  </span>
-  <br />
-  <span id="rangedSpan">
-    <label id="rangedLabel"><b>Ranged Capability: </b></label>
-    <input id="ranged" readonly />
-  </span>
-  <br />
-  <span id="protectionSpan">
-    <label id="protectionLabel"><b>Defensive Capability: </b></label>
-    <input id="protection" readonly />
-  </span>
-  <br />
-  <span id="utilitySpan">
-    <label id="utilityLabel"><b>Utility: </b></label>
-    <input id="utility" readonly />
-  </span>
-  <br />
-  <span id="personalitySpan">
-    <label id="personalityLabel"><b>Personality</b></label>
+  <hr />
+  <div id="output" ng-controller="displayField">
+    <span id="designationSpan">
+      <label><b>Designation: </b></label>
+      <input id="designation" readonly />
+    </span>
+    <span id="nameSpan">
+      <label id="nameLabel"><b>Name: </b></label>
+      <input id="name" readonly/>
+    </span>
     <br />
-    <textarea id="personality" rows="10" cols="90" readonly>
+    <span id="locSpan">
+      <label><b>Location: </b></label>
+      <input id="location" readonly />
+    </span>
+    <span id="heightSpan">
+      <label id="heightLabel"><b>Height: </b></label>
+      <input id="height" readonly />
+    </span>
+    <br />
+    <span id="meleeSpan">
+      <label id="meleeLabel"><b>Melee Capability: </b></label>
+      <input id="melee" readonly />
+    </span>
+    <br />
+    <span id="rangedSpan">
+      <label id="rangedLabel"><b>Ranged Capability: </b></label>
+      <input id="ranged" readonly />
+    </span>
+    <br />
+    <span id="protectionSpan">
+      <label id="protectionLabel"><b>Defensive Capability: </b></label>
+      <input id="protection" readonly />
+    </span>
+    <br />
+    <span id="utilitySpan">
+      <label id="utilityLabel"><b>Utility: </b></label>
+      <input id="utility" readonly />
+    </span>
+    <br />
+    <span id="personalitySpan">
+      <label id="personalityLabel"><b>Personality</b></label>
+      <br />
+      <textarea id="personality" rows="10" cols="90" readonly>
       </textarea>
-  </span>
-  <br />
-  <span id="linkSpan">
-    <input id="link" type="button" value="View Dossier" disabled />
-  </span>
+    </span>
+    <br />
+    <span id="linkSpan">
+      <input id="link" type="button" value="View Dossier" disabled />
+    </span>
+  </div>
 </div>
+
+<div id="engines" ng-app="frameApp" class="tabcontent">
+  <h1>Project Gabriel Data Access</h1>
+  <hr />
+  <div ng-controller="lookupField">
+    <!-- <input id="searchField" ng-model="sampledata" /> -->
+    <select id="engineSelectField" ng-model="sampledata">
+    </select>
+    <button ng-click="SendData()">Search</button>
+  </div>
+  <br />
+  <hr />
+  <div id="output" ng-controller="displayField">
+    <span id="designationSpan">
+      <label><b>Designation: </b></label>
+      <input id="designation" readonly />
+    </span>
+    <span id="nameSpan">
+      <label id="nameLabel"><b>Name: </b></label>
+      <input id="name" readonly/>
+    </span>
+    <br />
+    <span id="locSpan">
+      <label><b>Location: </b></label>
+      <input id="location" readonly />
+    </span>
+    <span id="heightSpan">
+      <label id="heightLabel"><b>Height: </b></label>
+      <input id="height" readonly />
+    </span>
+    <br />
+    <span id="meleeSpan">
+      <label id="meleeLabel"><b>Melee Capability: </b></label>
+      <input id="melee" readonly />
+    </span>
+    <br />
+    <span id="rangedSpan">
+      <label id="rangedLabel"><b>Ranged Capability: </b></label>
+      <input id="ranged" readonly />
+    </span>
+    <br />
+    <span id="protectionSpan">
+      <label id="protectionLabel"><b>Defensive Capability: </b></label>
+      <input id="protection" readonly />
+    </span>
+    <br />
+    <span id="utilitySpan">
+      <label id="utilityLabel"><b>Utility: </b></label>
+      <input id="utility" readonly />
+    </span>
+    <br />
+    <span id="personalitySpan">
+      <label id="personalityLabel"><b>Personality</b></label>
+      <br />
+      <textarea id="personality" rows="10" cols="90" readonly>
+      </textarea>
+    </span>
+    <br />
+    <span id="linkSpan">
+      <input id="link" type="button" value="View Dossier" disabled />
+    </span>
+  </div>
 </div>
