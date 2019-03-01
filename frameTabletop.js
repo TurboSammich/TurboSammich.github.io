@@ -8,17 +8,33 @@ function init() {
 function showInfo(data, tabletop) {
   console.log(data);
 
-  //Populate select element dropdown
+  //Populate Frame select dropdown
   var select = document.getElementById('selectField')
-  for (index in data) {
+  for (index in data["frames"]["elements"]) {
     option = document.createElement('option');
-    option.setAttribute('value', data[index]["name"]);
-    var display = data[index]["designation"] + " | " + data[index]["name"];
+    option.setAttribute('value', data["frames"]["elements"][index]["name"]);
+    var display = data["frames"]["elements"][index]["designation"] + " | " + data["frames"]["elements"][index]["name"];
     option.appendChild(document.createTextNode(display));
     select.appendChild(option);
   }
 
-  app.data = data;
+  //Populate Engine Series select dropdown
+  var seriesSelect = document.getElementById('engineSeriesSelect')
+  var engineData = data["engines"]["elements"];
+  for (index in engineData) {
+    console.log(engineData[index]["engineSeries"])
+    var series = engineData[index]["engineSeries"];
+    //seriesSelect.value = series;
+    if (seriesSelect.selectedIndex == -1) {
+      option = document.createElement('option');
+      option.setAttribute('value',series);
+      option.appendChild(document.createTextNode(series));
+      seriesSelect.appendChild(option);
+    }
+  }
+
+  app.frameData = data["frames"]["elements"];
+  app.engineData = engineData;
   }
 
 window.addEventListener('DOMContentLoaded', init)

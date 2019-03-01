@@ -2,7 +2,7 @@ var app = angular.module("frameApp",[]);
 
 //this controller is the display
 //it receives <ReceivedData> from lookupField
-app.data = ""
+app.frameData = ""
 
 app.controller("displayField", function($scope,$rootScope, demoService) {
   $scope.title="Results";
@@ -42,10 +42,10 @@ app.controller("lookupField",function($scope, demoService) {
 app.service("demoService",function($rootScope){
   this.TempData = "";
   this.SetData = function(d) {
-    for (var index in app.data) {
-      if (app.data.hasOwnProperty(index)) {
-        if (app.data[index]["name"] == d) {
-          this.TempData = app.data[index]
+    for (var index in app.frameData) {
+      if (app.frameData.hasOwnProperty(index)) {
+        if (app.frameData[index]["name"] == d) {
+          this.TempData = app.frameData[index]
         }
       }
     }
@@ -56,3 +56,23 @@ app.service("demoService",function($rootScope){
       return this.TempData;
     }
   })
+
+function openSheet(evt,sheetName) {
+  var i, tabcontent, tablinks
+
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for(i=0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  //get all elements with class="tablinks" and remove "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i=0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active","");
+  }
+
+  //Show current tab, add active class to button that opened it
+  console.log(sheetName)
+  document.getElementById(sheetName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

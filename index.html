@@ -8,8 +8,8 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <div class="tab">
-  <button class="tablinks" onclick="openSheet(event, 'Frames')">Frames</button>
-  <button class="tablinks" onclick="openSheet(event, 'Engines')">Engines</button>
+  <button class="tablinks" onclick="openSheet(event, 'frames')" id="frameButton">Frames</button>
+  <button class="tablinks" onclick="openSheet(event, 'engines')" id="engineButton">Engines</button>
 </div>
 
 <div id="frames" ng-app="frameApp" class="tabcontent">
@@ -18,6 +18,7 @@
   <div ng-controller="lookupField">
     <!-- <input id="searchField" ng-model="sampledata" /> -->
     <select id="selectField" ng-model="sampledata">
+      <option value="" selected disabled hidden>--Select Frame--</option>
     </select>
     <button ng-click="SendData()">Search</button>
   </div>
@@ -80,7 +81,10 @@
   <hr />
   <div ng-controller="lookupField">
     <!-- <input id="searchField" ng-model="sampledata" /> -->
-    <select id="engineSelectField" ng-model="sampledata">
+    <select id="engineSeriesSelect" ng-model="sampledata">
+      <option value="" selected disabled hidden>--Select Devil Engine Series--</option>
+    </select>
+    <select id="engineSelectField">
     </select>
     <button ng-click="SendData()">Search</button>
   </div>
@@ -137,3 +141,8 @@
     </span>
   </div>
 </div>
+
+<!-- Click on 'Frames' button to default frames tab as open -->
+<script>
+  document.getElementById("frameButton").click();
+</script>
