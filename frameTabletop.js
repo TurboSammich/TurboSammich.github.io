@@ -10,10 +10,11 @@ function showInfo(data, tabletop) {
 
   //Populate Frame select dropdown
   var select = document.getElementById('selectField')
-  for (index in data["frames"]["elements"]) {
+  var frameData = data["frames"]["elements"];
+  for (index in frameData) {
     option = document.createElement('option');
-    option.setAttribute('value', data["frames"]["elements"][index]["name"]);
-    var display = data["frames"]["elements"][index]["designation"] + " | " + data["frames"]["elements"][index]["name"];
+    option.setAttribute('value', frameData[index]["name"]);
+    var display = frameData[index]["designation"] + " | " + frameData[index]["name"];
     option.appendChild(document.createTextNode(display));
     select.appendChild(option);
   }
@@ -22,18 +23,18 @@ function showInfo(data, tabletop) {
   var seriesSelect = document.getElementById('engineSeriesSelect')
   var engineData = data["engines"]["elements"];
   for (index in engineData) {
-    console.log(engineData[index]["engineSeries"])
     var series = engineData[index]["engineSeries"];
-    //seriesSelect.value = series;
+    seriesSelect.value = series;
     if (seriesSelect.selectedIndex == -1) {
       option = document.createElement('option');
       option.setAttribute('value',series);
       option.appendChild(document.createTextNode(series));
       seriesSelect.appendChild(option);
     }
+    seriesSelect.value = "";
   }
 
-  app.frameData = data["frames"]["elements"];
+  app.frameData = frameData;
   app.engineData = engineData;
   }
 

@@ -15,16 +15,12 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
         document.getElementById(element).disabled = false
         document.getElementById(element).onclick = function() {
           window.open(url,'_blank')
-          console.log("HELP ME")
         }
       } else {
         document.getElementById(element).value = t[element]
       }
     }
   });
-  function Launch() {
-    console.log("HELP")
-  }
 });
 
 //this controller is the 'input'
@@ -72,7 +68,34 @@ function openSheet(evt,sheetName) {
   }
 
   //Show current tab, add active class to button that opened it
-  console.log(sheetName)
   document.getElementById(sheetName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+$(document).ready(function() {
+  //Click "frame" button to default to that pane
+  document.getElementById("frameButton").click();
+  //define onchange behavior for engine selects
+  var seriesSelect = document.getElementById('engineSeriesSelect')
+  seriesSelect.onchange = function() {
+    var select = document.getElementById('engineSelectField');
+    select.options.length = 0;
+    option = document.createElement('option');
+    option.setAttribute('value',"");
+    option.setAttribute('hidden','');
+    option.setAttribute('disabled','');
+    option.setAttribute('selected','');
+    option.appendChild(document.createTextNode("--Select Engine--"));
+    select.appendChild(option);
+    for (index in app.engineData) {
+      if (app.engineData[index]["engineSeries"] == seriesSelect.value) {
+        option = document.createElement('option');
+        option.setAttribute('value', app.engineData[index]["engineName"]);
+        var display = app.engineData[index]["engineDesignation"] + " | " + app.engineData[index]["engineName"];
+        option.appendChild(document.createTextNode(display));
+        select.appendChild(option);
+      }
+    }
+    select.value = "";
+  }
+});

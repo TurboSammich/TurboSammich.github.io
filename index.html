@@ -1,10 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <script src = "frameTabletop.js"></script>
+<script src = "lookupFrames.js"></script>
 <!--<script src = "engineTabletop.js"></script>
 <script src = "lookupEngines.js"></script>
 -->
-<script src = "lookupFrames.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <div class="tab">
@@ -82,9 +84,10 @@
   <div ng-controller="lookupField">
     <!-- <input id="searchField" ng-model="sampledata" /> -->
     <select id="engineSeriesSelect" ng-model="sampledata">
-      <option value="" selected disabled hidden>--Select Devil Engine Series--</option>
+      <option value="" selected disabled hidden>--Select Series--</option>
     </select>
     <select id="engineSelectField">
+      <option value="" selected disabled hidden>--Select Engine--</option>
     </select>
     <button ng-click="SendData()">Search</button>
   </div>
@@ -141,8 +144,3 @@
     </span>
   </div>
 </div>
-
-<!-- Click on 'Frames' button to default frames tab as open -->
-<script>
-  document.getElementById("frameButton").click();
-</script>
