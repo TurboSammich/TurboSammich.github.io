@@ -2,11 +2,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script src = "frameTabletop.js"></script>
-<script src = "lookupFrames.js"></script>
-<!--<script src = "engineTabletop.js"></script>
-<script src = "lookupEngines.js"></script>
--->
+<script src = "tabletop.js"></script>
+<script src = "lookup.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <div class="tab">
@@ -14,133 +11,127 @@
   <button class="tablinks" onclick="openSheet(event, 'engines')" id="engineButton">Engines</button>
 </div>
 
-<div id="frames" ng-app="frameApp" class="tabcontent">
-  <h1>Project Gabriel Data Access</h1>
-  <hr />
-  <div ng-controller="lookupField">
-    <!-- <input id="searchField" ng-model="sampledata" /> -->
-    <select id="selectField" ng-model="sampledata">
-      <option value="" selected disabled hidden>--Select Frame--</option>
-    </select>
-    <button ng-click="SendData()">Search</button>
-  </div>
-  <br />
-  <hr />
-  <div id="output" ng-controller="displayField">
-    <span id="designationSpan">
-      <label><b>Designation: </b></label>
-      <input id="designation" readonly />
-    </span>
-    <span id="nameSpan">
-      <label id="nameLabel"><b>Name: </b></label>
-      <input id="name" readonly/>
-    </span>
+<div ng-app="frameApp">
+  <div id="frames" class="tabcontent">
+    <h1>Project Gabriel Data Access</h1>
+    <hr />
+    <div ng-controller="lookupField">
+      <select id="selectField" ng-model="frameModel">
+        <option value="" selected disabled hidden>--Select Frame--</option>
+      </select>
+      <button ng-click="SendFrameData()">Search</button>
+    </div>
     <br />
-    <span id="locSpan">
-      <label><b>Location: </b></label>
-      <input id="location" readonly />
-    </span>
-    <span id="heightSpan">
-      <label id="heightLabel"><b>Height: </b></label>
-      <input id="height" readonly />
-    </span>
-    <br />
-    <span id="meleeSpan">
-      <label id="meleeLabel"><b>Melee Capability: </b></label>
-      <input id="melee" readonly />
-    </span>
-    <br />
-    <span id="rangedSpan">
-      <label id="rangedLabel"><b>Ranged Capability: </b></label>
-      <input id="ranged" readonly />
-    </span>
-    <br />
-    <span id="protectionSpan">
-      <label id="protectionLabel"><b>Defensive Capability: </b></label>
-      <input id="protection" readonly />
-    </span>
-    <br />
-    <span id="utilitySpan">
-      <label id="utilityLabel"><b>Utility: </b></label>
-      <input id="utility" readonly />
-    </span>
-    <br />
-    <span id="personalitySpan">
-      <label id="personalityLabel"><b>Personality</b></label>
+    <hr />
+    <div id="output" ng-controller="displayField">
+      <span>
+        <label><b>Designation: </b></label>
+        <input id="designation" readonly />
+      </span>
+      <span>
+        <label class="rightLabel"><b>Name: </b></label>
+        <input id="name" class="rightField" readonly/>
+      </span>
       <br />
-      <textarea id="personality" rows="10" cols="90" readonly>
-      </textarea>
-    </span>
-    <br />
-    <span id="linkSpan">
-      <input id="link" type="button" value="View Dossier" disabled />
-    </span>
+      <span>
+        <label><b>Location: </b></label>
+        <input id="location" readonly />
+      </span>
+      <span>
+        <label class="rightLabel"><b>Height: </b></label>
+        <input id="height" class="rightField" readonly />
+      </span>
+      <br />
+      <span>
+        <label id="meleeLabel"><b>Melee Capability: </b></label>
+        <input id="melee" readonly />
+      </span>
+      <br />
+      <span>
+        <label id="rangedLabel"><b>Ranged Capability: </b></label>
+        <input id="ranged" readonly />
+      </span>
+      <br />
+      <span>
+        <label id="protectionLabel"><b>Defensive Capability: </b></label>
+        <input id="protection" readonly />
+      </span>
+      <br />
+      <span>
+        <label id="utilityLabel"><b>Utility: </b></label>
+        <input id="utility" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="areaLabel"><b>Personality</b></label>
+        <br />
+        <textarea id="personality" class="areaField" rows="10" cols="90" readonly>
+        </textarea>
+      </span>
+      <br />
+      <span id="linkSpan">
+        <input id="link" type="button" class="dossierButton" value="View Dossier" disabled />
+      </span>
+    </div>
   </div>
-</div>
 
-<div id="engines" ng-app="frameApp" class="tabcontent">
-  <h1>Project Gabriel Data Access</h1>
-  <hr />
-  <div ng-controller="lookupField">
-    <!-- <input id="searchField" ng-model="sampledata" /> -->
-    <select id="engineSeriesSelect" ng-model="sampledata">
-      <option value="" selected disabled hidden>--Select Series--</option>
-    </select>
-    <select id="engineSelectField">
-      <option value="" selected disabled hidden>--Select Engine--</option>
-    </select>
-    <button ng-click="SendData()">Search</button>
-  </div>
-  <br />
-  <hr />
-  <div id="output" ng-controller="displayField">
-    <span id="designationSpan">
-      <label><b>Designation: </b></label>
-      <input id="designation" readonly />
-    </span>
-    <span id="nameSpan">
-      <label id="nameLabel"><b>Name: </b></label>
-      <input id="name" readonly/>
-    </span>
+  <div id="engines" ng-app="frameApp" class="tabcontent">
+    <h1>Project Gabriel Data Access</h1>
+    <hr />
+    <div ng-controller="lookupField">
+      <!-- <input id="searchField" ng-model="sampledata" /> -->
+      <select id="engineSeriesSelect">
+        <option value="" selected disabled hidden>--Select Series--</option>
+      </select>
+      <select id="engineSelectField" ng-model="engineModel">
+        <option value="" selected disabled hidden>--Select Engine--</option>
+      </select>
+      <button ng-click="SendEngineData()">Search</button>
+    </div>
     <br />
-    <span id="locSpan">
-      <label><b>Location: </b></label>
-      <input id="location" readonly />
-    </span>
-    <span id="heightSpan">
-      <label id="heightLabel"><b>Height: </b></label>
-      <input id="height" readonly />
-    </span>
-    <br />
-    <span id="meleeSpan">
-      <label id="meleeLabel"><b>Melee Capability: </b></label>
-      <input id="melee" readonly />
-    </span>
-    <br />
-    <span id="rangedSpan">
-      <label id="rangedLabel"><b>Ranged Capability: </b></label>
-      <input id="ranged" readonly />
-    </span>
-    <br />
-    <span id="protectionSpan">
-      <label id="protectionLabel"><b>Defensive Capability: </b></label>
-      <input id="protection" readonly />
-    </span>
-    <br />
-    <span id="utilitySpan">
-      <label id="utilityLabel"><b>Utility: </b></label>
-      <input id="utility" readonly />
-    </span>
-    <br />
-    <span id="personalitySpan">
-      <label id="personalityLabel"><b>Personality</b></label>
+    <hr />
+    <div id="output" ng-controller="displayField">
+      <span>
+        <label><b>Designation: </b></label>
+        <input id="engineDesignation" readonly />
+      </span>
+      <span>
+        <label class="rightLabel"><b>Name: </b></label>
+        <input id="engineName" class="rightField" readonly/>
+      </span>
       <br />
-      <textarea id="personality" rows="10" cols="90" readonly>
-      </textarea>
-    </span>
-    <br />
-    <span id="linkSpan">
-      <input id="link" type="button" value="View Dossier" disabled />
-    </span>
+      <span>
+        <label><b>Series: </b></label>
+        <input id="engineSeries" readonly />
+      </span>
+      <span>
+        <label class="rightLabel"><b>Height: </b></label>
+        <input id="engineVariant" class="rightField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel"><b>Engine Rating: </b></label>
+        <input id="engineRating" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel"><b>Ranged Capability: </b></label>
+        <input id="engineWeapons" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel"><b>Defensive Capability: </b></label>
+        <input id="engineDefense" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel"><b>Utility: </b></label>
+        <input id="engineTactics" class="fullField" readonly />
+      </span>
+      <br />
+      <span id="linkSpan">
+        <input id="engineLink" class="dossierButton" type="button" value="View Dossier" disabled />
+      </span>
+    </div>
   </div>
 </div>
