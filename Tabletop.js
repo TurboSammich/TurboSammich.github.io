@@ -2,24 +2,40 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1bQ-VOlz4uY-2
 
 function init() {
   Tabletop.init( { key: publicSpreadsheetUrl,
-                   callback: showInfo,
-                   simpleSheet: true } )
+                   callback: showInfo} )
 }
 
 function showInfo(data, tabletop) {
   console.log(data);
 
-  //Populate select element dropdown
+  //Populate Frame select dropdown
   var select = document.getElementById('selectField')
-  for (index in data) {
+  var frameData = data["frames"]["elements"];
+  for (index in frameData) {
     option = document.createElement('option');
-    option.setAttribute('value', data[index]["name"]);
-    var display = data[index]["designation"] + " | " + data[index]["name"];
+    option.setAttribute('value', frameData[index]["name"]);
+    var display = frameData[index]["designation"] + " | " + frameData[index]["name"];
     option.appendChild(document.createTextNode(display));
     select.appendChild(option);
   }
 
-  app.data = data;
+  //Populate Engine Series select dropdown
+  var seriesSelect = document.getElementById('engineSeriesSelect')
+  var engineData = data["engines"]["elements"];
+  for (index in engineData) {
+    var series = engineData[index]["engineSeries"];
+    seriesSelect.value = series;
+    if (seriesSelect.selectedIndex == -1) {
+      option = document.createElement('option');
+      option.setAttribute('value',series);
+      option.appendChild(document.createTextNode(series));
+      seriesSelect.appendChild(option);
+    }
+    seriesSelect.value = "";
+  }
+
+  app.frameData = frameData;
+  app.engineData = engineData;
   }
 
 window.addEventListener('DOMContentLoaded', init)
