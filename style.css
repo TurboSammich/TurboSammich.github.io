@@ -5,13 +5,16 @@ body{
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #AAA;
   border-top: none;
+  width: 690px;
 }
 .tab {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-left: 2px;
+  padding-left: 2px;
   position: relative;
 }
 .tab:before {
@@ -20,7 +23,7 @@ body{
 .tab:after {
   position: absolute;
   content: "";
-  width: 100%;
+  width: 714px;
   bottom: 0;
   left: 0;
   border-bottom: 1px solid #AAA;
@@ -47,6 +50,27 @@ body{
   background-color: #d9d9d9;
   z-index: 2;
   border-bottom-color: #d9d9d9;
+}
+.header div{
+  display: block;
+}
+.header img{
+  float: left;
+  /*padding: 0;
+  margin: 0;*/
+  display: inline-block;
+  padding-top: -10px;
+  margin-top: -10px;
+  margin-bottom: -20px;
+  padding-bottom: -20px;
+  /*padding-bottom: -50px;*/
+}
+.header h1 {
+  position: relative;
+  top: 8px;
+}
+.header hr {
+  padding-top: -20px;
 }
 .fullField {
   width: 500px;
@@ -105,57 +129,6 @@ select{
 hr{
   width: 680px;
   display: inline-block;
-}
-#nameLabel{
-  display: inline-block;
-  clear: none;
-  float: none;
-  padding-right: 5px;
-}
-#name{
-  display: inline-block;
-  clear: none;
-}
-#heightLabel{
-  display: inline-block;
-  clear: none;
-  float: none;
-  padding-right: 5px;
-}
-#height{
-  display: inline-block;
-  clear: none;
-}
-#meleeLabel{
-  width: 165px;
-  padding-right: 10px;
-}
-#rangedLabel{
-  width: 165px;
-  padding-right: 10px;
-}
-#protectionLabel{
-  width: 165px;
-  padding-right: 10px;
-}
-#utilityLabel{
-  width: 165px;
-  padding-right: 10px;
-}
-#melee{
-  width: 500px;
-}
-#ranged{
-  width: 500px;
-}
-#protection{
-  width: 500px;
-}
-#utility{
-  width: 500px;
-}
-#personalityLabel{
-  padding-bottom: 0px;
 }
 #linkSpan{
   text-align: center;
