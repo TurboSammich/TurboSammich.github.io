@@ -51,6 +51,7 @@ body{
   z-index: 2;
   border-bottom-color: #d9d9d9;
 }
+/*Style the header*/
 .header div{
   display: block;
 }
@@ -67,10 +68,15 @@ body{
 }
 .header h1 {
   position: relative;
+  font-family: "Helvetica Neue",Helvetica,sans-serif;
   top: 8px;
 }
 .header hr {
   padding-top: -20px;
+}
+/*Style the page form*/
+.pageForm {
+  font-family: "Helvetica Neue",Helvetica,sans-serif
 }
 .fullField {
   width: 500px;

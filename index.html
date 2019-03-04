@@ -6,6 +6,12 @@
 <script src = "lookup.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
+<head>
+  <title>Project Gabriel Data Stores</title>
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+</head>
+
 <div class="tab">
   <button class="tablinks" onclick="openSheet(event, 'frames')" id="frameButton">Frames</button>
   <button class="tablinks" onclick="openSheet(event, 'engines')" id="engineButton">Engines</button>
@@ -16,11 +22,11 @@
   <h1>Project Gabriel Data Access</h1>
 </div>-->
 
-<div ng-app="frameApp">
+<div class="pageForm" ng-app="frameApp">
   <div id="frames" class="tabcontent">
     <div class="header">
       <img src="PGabe.png" alt="Project Gabriel Logo" style="height:75px;width:75px">
-      <h1>Project Gabriel Data Access</h1>
+      <h1>PROJECT GABRIEL DATA ACCESS</h1>
       <hr />
     </div>
     <div ng-controller="lookupField">
@@ -33,45 +39,45 @@
     <hr />
     <div id="output" ng-controller="displayField">
       <span>
-        <label><b>Designation: </b></label>
+        <label>Designation: </label>
         <input id="designation" readonly />
       </span>
       <span>
-        <label class="rightLabel"><b>Name: </b></label>
+        <label class="rightLabel">Name: </label>
         <input id="name" class="rightField" readonly/>
       </span>
       <br />
       <span>
-        <label><b>Location: </b></label>
+        <label>Location: </label>
         <input id="location" readonly />
       </span>
       <span>
-        <label class="rightLabel"><b>Height: </b></label>
+        <label class="rightLabel">Height: </label>
         <input id="height" class="rightField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Melee Capability: </b></label>
+        <label class="fullLabel">Melee Capability: </label>
         <input id="melee" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Ranged Capability: </b></label>
+        <label class="fullLabel">Ranged Capability: </label>
         <input id="ranged" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Defensive Capability: </b></label>
+        <label class="fullLabel">Defensive Capability: </label>
         <input id="protection" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Utility: </b></label>
+        <label class="fullLabel">Utility: </label>
         <input id="utility" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="areaLabel"><b>Personality</b></label>
+        <label class="areaLabel">Personality</label>
         <br />
         <textarea id="personality" class="areaField" rows="10" cols="90" readonly>
         </textarea>
@@ -87,7 +93,7 @@
 
     <div class="header">
       <img src="PGabe.png" alt="Project Gabriel Logo" style="height:75px;width:75px">
-      <h1>Project Gabriel Data Access</h1>
+      <h1>PROJECT GABRIEL DATA ACCESS</h1>
       <hr />
     </div>
 
@@ -105,40 +111,40 @@
     <hr />
     <div id="output" ng-controller="displayField">
       <span>
-        <label><b>Designation: </b></label>
+        <label>Designation: </label>
         <input id="engineDesignation" readonly />
       </span>
       <span>
-        <label class="rightLabel"><b>Name: </b></label>
+        <label class="rightLabel">Name: </label>
         <input id="engineName" class="rightField" readonly/>
       </span>
       <br />
       <span>
-        <label><b>Series: </b></label>
+        <label>Series: </label>
         <input id="engineSeries" readonly />
       </span>
       <span>
-        <label class="rightLabel"><b>Variant: </b></label>
+        <label class="rightLabel">Variant: </label>
         <input id="engineVariant" class="rightField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Engine Rating: </b></label>
+        <label class="fullLabel">Engine Rating: </label>
         <input id="engineRating" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Offensive Capability: </b></label>
+        <label class="fullLabel">Offensive Capability: </label>
         <input id="engineWeapons" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Defensive Capability: </b></label>
+        <label class="fullLabel">Defensive Capability: </label>
         <input id="engineDefense" class="fullField" readonly />
       </span>
       <br />
       <span>
-        <label class="fullLabel"><b>Tactical Notes: </b></label>
+        <label class="fullLabel">Tactical Notes: </label>
         <input id="engineTactics" class="fullField" readonly />
       </span>
       <br />
