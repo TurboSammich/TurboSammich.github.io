@@ -15,6 +15,7 @@
 <div class="tab">
   <button class="tablinks" onclick="openSheet(event, 'frames')" id="frameButton">Frames</button>
   <button class="tablinks" onclick="openSheet(event, 'engines')" id="engineButton">Engines</button>
+  <button class="tablinks" onclick="openSheet(event, 'personnel')" id="personnelButton">Personnel</button>
 </div>
 
 <!--<div class="header">
@@ -150,6 +151,80 @@
       <br />
       <span id="linkSpan">
         <input id="engineLink" class="dossierButton" type="button" value="View Dossier" disabled />
+      </span>
+    </div>
+  </div>
+
+  <div id="personnel" ng-app="frameApp" class="tabcontent">
+
+    <div class="header">
+      <img src="PGabe.png" alt="Project Gabriel Logo" style="height:75px;width:75px">
+      <h1>PROJECT GABRIEL DATA PORTAL</h1>
+      <hr />
+    </div>
+
+    <div ng-controller="lookupField">
+      <!-- <input id="searchField" ng-model="sampledata" /> -->
+      <select id="staffRoleSelect">
+        <option value="" selected disabled hidden>--Select Role--</option>
+      </select>
+      <select id="staffSelectField" ng-model="staffModel">
+        <option value="" selected disabled hidden>--Select Personnel--</option>
+      </select>
+      <button ng-click="SendStaffData()">Search</button>
+    </div>
+    <br />
+    <hr />
+    <div id="output" ng-controller="displayField">
+      <span>
+        <label>Name: </label>
+        <input id="staffName" readonly />
+      </span>
+      <span>
+        <label class="rightLabel">Role: </label>
+        <input id="staffRole" class="rightField" readonly/>
+      </span>
+      <br />
+      <span>
+        <label>Pronouns: </label>
+        <input id="staffPronouns" readonly />
+      </span>
+      <span>
+        <label class="rightLabel">Designation: </label>
+        <input id="staffDesignation" class="rightField" readonly />
+      </span>
+      <br />
+      <span>
+        <label>Origin: </label>
+        <input id="staffOrigin" readonly />
+      </span>
+      <span>
+        <label class="rightLabel">Status: </label>
+        <input id="staffStatus" class="rightField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel">Specialty: </label>
+        <input id="staffSpecialty" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel">King: </label>
+        <input id="staffKing" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel">Queen: </label>
+        <input id="staffQueen" class="fullField" readonly />
+      </span>
+      <br />
+      <span>
+        <label class="fullLabel">Jack: </label>
+        <input id="staffJack" class="fullField" readonly />
+      </span>
+      <br />
+      <span id="linkSpan">
+        <input id="staffLink" class="dossierButton" type="button" value="View Dossier" disabled />
       </span>
     </div>
   </div>

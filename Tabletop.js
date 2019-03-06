@@ -34,8 +34,23 @@ function showInfo(data, tabletop) {
     seriesSelect.value = "";
   }
 
+  //Populate Staff Role select dropdown
+  var staffRoleSelect = document.getElementById('staffRoleSelect')
+  var staffData = data["staff"]["elements"];
+  for (index in staffData) {
+    var role = staffData[index]["staffRole"];
+    staffRoleSelect.value = role;
+    if (staffRoleSelect.selectedIndex == -1) {
+      option = document.createElement('option');
+      option.setAttribute('value',role);
+      option.appendChild(document.createTextNode(role));
+      staffRoleSelect.appendChild(option);
+    }
+    staffRoleSelect.value = "";
+  }
   app.frameData = frameData;
   app.engineData = engineData;
+  app.staffData = staffData;
   }
 
 window.addEventListener('DOMContentLoaded', init)

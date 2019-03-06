@@ -10,13 +10,14 @@ app.controller("displayField", function($scope,$rootScope, demoService) {
     var t = demoService.GetData()
     $scope.ReceivedData = t;
     for (element in t) {
-      if (element == "link" || element == "engineLink") {
+      if (element == "link" || element == "engineLink" || element == "staffLink") {
         var url = t[element]
         document.getElementById(element).disabled = false
         document.getElementById(element).onclick = function() {
           window.open(url,'_blank')
         }
       } else {
+        console.log(element)
         document.getElementById(element).value = t[element]
       }
     }
@@ -36,6 +37,11 @@ app.controller("lookupField",function($scope, demoService) {
   $scope.SendEngineData = function() {
     var d = $scope.engineModel;
     demoService.SetEngineData(d);
+  }
+  $scope.SendStaffData = function() {
+    console.log("Sending...")
+    var d = $scope.staffModel;
+    demoService.SetStaffData(d);
   }
 });
 
@@ -57,6 +63,17 @@ app.service("demoService",function($rootScope){
     for (var index in dataSet) {
       if (dataSet.hasOwnProperty(index)) {
         if (dataSet[index]["engineDesignation"] == d) {
+          this.TempData = dataSet[index]
+        }
+      }
+    }
+    $rootScope.$emit("dummyevent")
+  }
+  this.SetStaffData = function(d) {
+    var dataSet = app.staffData
+    for (var index in dataSet) {
+      if (dataSet.hasOwnProperty(index)) {
+        if(dataSet[index]["staffName"] == d) {
           this.TempData = dataSet[index]
         }
       }
@@ -114,4 +131,28 @@ $(document).ready(function() {
     }
     select.value = "";
   }
+  //define onchange behavior for staff selects
+  var roleSelect = document.getElementById('staffRoleSelect')
+  roleSelect.onchange = function() {
+    var select = document.getElementById('staffSelectField');
+    select.options.length = 0;
+    option = document.createElement('option');
+    option.setAttribute('value',"");
+    option.setAttribute('hidden','');
+    option.setAttribute('disabled','');
+    option.setAttribute('selected','');
+    option.appendChild(document.createTextNode("--Select Personnel--"));
+    select.appendChild(option);
+    for (index in app.staffData) {
+      if (app.staffData[index]["staffRole"] == roleSelect.value) {
+        option = document.createElement('option');
+        option.setAttribute('value', app.staffData[index]["staffName"]);
+        var display = app.staffData[index]["staffName"];
+        option.appendChild(document.createTextNode(display));
+        select.appendChild(option);
+      }
+    }
+    select.value = "";
+  }
+
 });
