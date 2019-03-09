@@ -97,6 +97,7 @@ body{
 }
 .areaLabel {
   padding-bottom: 0px;
+  width: 150px;
 }
 .dossierButton{
   width: 90px;
