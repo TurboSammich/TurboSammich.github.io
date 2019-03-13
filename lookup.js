@@ -4,88 +4,6 @@ var app = angular.module("frameApp",[]);
 //it receives <ReceivedData> from lookupField
 app.frameData = ""
 
-app.controller("displayField", function($scope,$rootScope, demoService) {
-  $scope.title="Results";
-  $rootScope.$on("dummyevent", function(){
-    var t = demoService.GetData()
-    $scope.ReceivedData = t;
-    for (element in t) {
-      if (element == "link" || element == "engineLink" || element == "staffLink") {
-        var url = t[element]
-        document.getElementById(element).disabled = false
-        document.getElementById(element).onclick = function() {
-          window.open(url,'_blank')
-        }
-      } else {
-        console.log(element)
-        document.getElementById(element).value = t[element]
-      }
-    }
-  });
-});
-
-//this controller is the 'input'
-//it passes user input to demoService, and asks it to send it to displayField
-app.controller("lookupField",function($scope, demoService) {
-  $scope.title = "Search Input";
-  //var select = document.getElementById('selectField');
-  //var option
-  $scope.SendFrameData = function() {
-    var d = $scope.frameModel;
-    demoService.SetFrameData(d);
-  }
-  $scope.SendEngineData = function() {
-    var d = $scope.engineModel;
-    demoService.SetEngineData(d);
-  }
-  $scope.SendStaffData = function() {
-    console.log("Sending...")
-    var d = $scope.staffModel;
-    demoService.SetStaffData(d);
-  }
-});
-
-app.service("demoService",function($rootScope){
-  this.TempData = "";
-  this.SetFrameData = function(d) {
-    var dataSet = app.frameData
-    for (var index in dataSet) {
-      if (dataSet.hasOwnProperty(index)) {
-        if (dataSet[index]["name"] == d) {
-          this.TempData = dataSet[index]
-        }
-      }
-    }
-    $rootScope.$emit("dummyevent")
-  }
-  this.SetEngineData = function(d) {
-    var dataSet = app.engineData
-    for (var index in dataSet) {
-      if (dataSet.hasOwnProperty(index)) {
-        if (dataSet[index]["engineDesignation"] == d) {
-          this.TempData = dataSet[index]
-        }
-      }
-    }
-    $rootScope.$emit("dummyevent")
-  }
-  this.SetStaffData = function(d) {
-    var dataSet = app.staffData
-    for (var index in dataSet) {
-      if (dataSet.hasOwnProperty(index)) {
-        if(dataSet[index]["staffName"] == d) {
-          this.TempData = dataSet[index]
-        }
-      }
-    }
-    $rootScope.$emit("dummyevent")
-  }
-
-    this.GetData = function() {
-      return this.TempData;
-    }
-  })
-
 function openSheet(evt,sheetName) {
   var i, tabcontent, tablinks
 
@@ -105,9 +23,36 @@ function openSheet(evt,sheetName) {
   evt.currentTarget.className += " active";
 }
 
+var fillFields = function(t) {
+  for (element in t) {
+    if (element == "link" || element == "engineLink" || element == "staffLink") {
+      var url = t[element]
+      document.getElementById(element).disabled = false
+      document.getElementById(element).onclick = function() {
+        window.open(url,'_blank')
+      }
+    } else {
+      console.log(element)
+      document.getElementById(element).value = t[element]
+    }
+  }
+}
+
 $(document).ready(function() {
   //Click "frame" button to default to that pane
   document.getElementById("frameButton").click();
+  //update frame fields when frame select changes
+  var frameSelect = document.getElementById('selectField')
+  frameSelect.onchange = function() {
+    var dataSet = app.frameData
+    for (var index in dataSet) {
+      if(dataSet.hasOwnProperty(index)) {
+        if (dataSet[index]["name"] == frameSelect.value) {
+          fillFields(dataSet[index]);
+        }
+      }
+    }
+  }
   //define onchange behavior for engine selects
   var seriesSelect = document.getElementById('engineSeriesSelect')
   seriesSelect.onchange = function() {
@@ -130,6 +75,18 @@ $(document).ready(function() {
       }
     }
     select.value = "";
+  }
+  //update engine fields when engine select changes
+  var engineSelect = document.getElementById('engineSelectField')
+  engineSelect.onchange = function() {
+    var dataSet = app.engineData
+    for (var index in dataSet) {
+      if(dataSet.hasOwnProperty(index)) {
+        if (dataSet[index]["engineDesignation"] == engineSelect.value) {
+          fillFields(dataSet[index]);
+        }
+      }
+    }
   }
   //define onchange behavior for staff selects
   var roleSelect = document.getElementById('staffRoleSelect')
@@ -154,5 +111,16 @@ $(document).ready(function() {
     }
     select.value = "";
   }
-
+  //update engine fields when engine select changes
+  var staffSelect = document.getElementById('staffSelectField')
+  staffSelect.onchange = function() {
+    var dataSet = app.staffData
+    for (var index in dataSet) {
+      if(dataSet.hasOwnProperty(index)) {
+        if (dataSet[index]["staffName"] == staffSelect.value) {
+          fillFields(dataSet[index]);
+        }
+      }
+    }
+  }
 });
